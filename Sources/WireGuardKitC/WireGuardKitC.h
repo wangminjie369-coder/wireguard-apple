@@ -1,6 +1,12 @@
 // SPDX-License-Identifier: MIT
 // Copyright © 2018-2023 WireGuard LLC. All Rights Reserved.
 
+/* Zenith fork: Xcode 16 / iOS 18 SDK 起，BSD 类型 u_int32_t/u_char/u_int16_t 必须由
+   Darwin 模块先行导入，否则 WireGuardKitC 作为 Objective-C module 构建失败
+   （"declaration of 'u_int32_t' must be imported from module ..."）。 */
+#include <sys/types.h>
+#include <stdint.h>
+
 #include "key.h"
 #include "x25519.h"
 
